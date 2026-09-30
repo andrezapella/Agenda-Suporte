@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda do Support Tec</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header class="topo">
+
+    <div>
+        <h1>AGENDA DO SUPPORTE TEC</h1>
+        <p>Controle mensal de atividades</p>
+    </div>
+
+
+    <div class="acoes-topo">
+
+        <button class="btn" onclick="abrirFuncionario()"> + Funcionário </button>
+
+
+        <button
+            class="btn"
+            onclick="abrirAtividade()"
+        >
+            + Atividade
+        </button>
+
+
+        <button
+            class="btn-config"
+            onclick="abrirConfiguracoes()"
+            title="Configurações"
+        >
+            ⚙
+        </button>
+
+    </div>
+
+</header>
+
+<main class="container">
+
+<section class="cards">
+
+    <div class="card">
+
+        <span class="card-icon">
+            👥
+        </span>
+
+        <div>
+
+            <small>
+                Funcionários
+            </small>
+
+            <strong id="totalFuncionarios">
+                0
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <span class="card-icon">
+            📅
+        </span>
+
+        <div>
+
+            <small>
+                Atividades no mês
+            </small>
+
+            <strong id="totalMes">
+                0
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <span class="card-icon">
+            📌
+        </span>
+
+        <div>
+
+            <small>
+                Atividades hoje
+            </small>
+
+            <strong id="totalHoje">
+                0
+            </strong>
+
+        </div>
+
+    </div>
+
+
+</section>
+
+
+<section class="controle">
+
+    <button
+        onclick="mesAnterior()"
+        title="Mês anterior"
+        class="btn-navegacao"
+    >
+        &lt;
+    </button>
+
+
+    <h2 id="mesAno">
+        Setembro 2026
+    </h2>
+
+
+    <button
+        onclick="mesProximo()"
+        title="Próximo mês"
+        class="btn-navegacao"
+    >
+        &gt;
+    </button>
+
+
+    <button
+        class="btn-hoje"
+        onclick="irHoje()"
+    >
+        Hoje
+    </button>
+
+</section>
+
+
+<section class="filtros">
+
+    <strong>
+        Filtrar:
+    </strong>
+
+
+    <select id="filtroFuncionario" onchange="renderizarCalendario()">
+
+        <option value="">
+            Todos os funcionários
+        </option>
+
+    </select>
+
+    <select id="filtroAtividade"onchange="renderizarCalendario()"
+    >
+        <option value="">
+            Todas as atividades
+        </option>
+
+    </select>
+
+
+    <button class="btn" onclick="limparFiltros()">Limpar</button>
+
+</section>
+
+
+<section class="calendario">
+
+
+    <div class="dias-semana">
+
+        <div>Dom</div>
+        <div>Seg</div>
+        <div>Ter</div>
+        <div>Qua</div>
+        <div>Qui</div>
+        <div>Sex</div>
+        <div>Sáb</div>
+
+    </div>
+
+
+    <div id="gradeCalendario"class="grade"></div>
+
+
+</section>
+
+
+<section class="secao">
+
+    <h2>
+        Funcionários
+    </h2>
+
+    <p>
+        Funcionários cadastrados no sistema
+    </p>
+
+
+    <div
+        id="listaFuncionarios"
+        class="lista"
+    ></div>
+
+</section>
+
+
+<section class="secao">
+
+    <h2>
+        Atividades / Funções
+    </h2>
+
+    <p>
+        Funções que podem ser atribuídas aos funcionários
+    </p>
+
+
+    <div
+        id="listaAtividades"
+        class="lista"
+    ></div>
+
+</section>
+
+
+</main>
+
+
+<div
+    id="modalFuncionario"
+    class="modal"
+>
+
+    <div class="modal-box">
+
+
+        <div class="modal-header">
+
+            <h2>
+                Cadastrar Funcionário
+            </h2>
+
+            <button
+                class="fechar"
+                onclick="fecharModais()"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div class="campo">
+
+            <label>
+                Nome do funcionário
+            </label>
+
+            <input
+                id="nomeFuncionario"
+                type="text"
+                placeholder="Ex.: João"
+            >
+
+        </div>
+
+
+        <div class="campo">
+
+            <label>
+                Cor do funcionário
+            </label>
+
+            <input
+                id="corFuncionario"
+                type="color"
+                value="#2563eb"
+            >
+
+        </div>
+
+
+        <div class="acoes-modal">
+
+            <button
+                class="btn-cancelar"
+                onclick="fecharModais()"
+            >
+                Cancelar
+            </button>
+
+
+            <button
+                class="btn"
+                onclick="salvarFuncionario()"
+            >
+                Cadastrar
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div
+    id="modalAtividade"
+    class="modal"
+>
+
+    <div class="modal-box">
+
+
+        <div class="modal-header">
+
+            <h2>
+                Cadastrar Atividade
+            </h2>
+
+            <button
+                class="fechar"
+                onclick="fecharModais()"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div class="campo">
+
+            <label>
+                Nome da atividade
+            </label>
+
+            <input
+                id="nomeAtividade"
+                type="text"
+                placeholder="Ex.: Monitoria"
+            >
+
+        </div>
+
+
+        <div class="campo">
+
+            <label>
+                Cor da atividade
+            </label>
+
+            <input
+                id="corAtividade"
+                type="color"
+                value="#16a34a"
+            >
+
+        </div>
+
+
+        <div class="acoes-modal">
+
+            <button
+                class="btn-cancelar"
+                onclick="fecharModais()"
+            >
+                Cancelar
+            </button>
+
+
+            <button
+                class="btn"
+                onclick="salvarAtividade()"
+            >
+                Cadastrar
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div
+    id="modalAgenda"
+    class="modal"
+>
+
+    <div class="modal-box">
+
+
+        <div class="modal-header">
+
+            <h2 id="tituloAgenda">
+                Nova atividade
+            </h2>
+
+            <button
+                class="fechar"
+                onclick="fecharModais()"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <input
+            type="hidden"
+            id="idAgendamento"
+        >
+
+
+        <div class="campo">
+
+            <label>
+                Data
+            </label>
+
+            <input
+                id="dataAgenda"
+                type="date"
+            >
+
+        </div>
+
+
+        <div class="campo">
+
+            <label>
+                Funcionário
+            </label>
+
+            <select
+                id="funcionarioAgenda"
+            ></select>
+
+        </div>
+
+
+        <div class="campo">
+
+            <label>
+                Atividade / Função
+            </label>
+
+            <select
+                id="atividadeAgenda"
+            ></select>
+
+        </div>
+
+
+        <div class="campo">
+
+            <label>
+                Descrição / Observação
+            </label>
+
+            <textarea
+                id="descricaoAgenda"
+                placeholder="Descreva o que será realizado..."
+            ></textarea>
+
+        </div>
+
+
+        <div class="acoes-modal">
+
+            <button
+                class="btn-cancelar"
+                onclick="fecharModais()"
+            >
+                Cancelar
+            </button>
+
+
+            <button
+                class="btn"
+                onclick="salvarAgendamento()"
+            >
+                Salvar atividade
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div
+    id="modalConfiguracoes"
+    class="modal"
+>
+
+    <div class="modal-box">
+
+
+        <div class="modal-header">
+
+            <h2>
+                Configurações
+            </h2>
+
+            <button
+                class="fechar"
+                onclick="fecharModais()"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div class="campo">
+
+            <label>
+                Tema da agenda
+            </label>
+
+            <select
+                id="tema"
+                onchange="alterarTema()"
+            >
+
+                <option value="claro">
+                    ☀️ Claro
+                </option>
+
+                <option value="escuro">
+                    🌙 Escuro
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="campo">
+
+            <label>
+                Cor principal da agenda
+            </label>
+
+
+            <div class="config-cor">
+
+                <input
+                    id="corPrincipal"
+                    type="color"
+                    value="#2563eb"
+                    onchange="alterarCorPrincipal()"
+                >
+
+
+                <span>
+                    Cor dos botões e destaques.
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="acoes-modal">
+
+            <button
+                class="btn"
+                onclick="fecharModais()"
+            >
+                Fechar
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script src="js/script.js"></script>
+
+</body>
+
+</html>

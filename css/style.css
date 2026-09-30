@@ -1,0 +1,1025 @@
+:root {
+
+    --primary: #2563eb;
+
+    --primary-hover: #1d4ed8;
+
+    --background: #f1f3f6;
+
+    --surface: #ffffff;
+
+    --text: #172033;
+
+    --text-light: #64748b;
+
+    --border: #e2e8f0;
+
+    --header: #111827;
+
+    --danger: #dc2626;
+
+    --shadow:
+        0 3px 12px rgba(0,0,0,0.07);
+}
+
+
+body.dark {
+
+    --background: #0f172a;
+
+    --surface: #1e293b;
+
+    --text: #f1f5f9;
+
+    --text-light: #94a3b8;
+
+    --border: #334155;
+
+    --header: #020617;
+
+}
+
+
+* {
+
+    box-sizing:
+        border-box;
+
+    margin:
+        0;
+
+    padding:
+        0;
+
+}
+
+
+body {
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background:
+        var(--background);
+
+    color:
+        var(--text);
+
+    transition:
+        background .2s,
+        color .2s;
+}
+
+
+button {
+
+    border:
+        none;
+
+    cursor:
+        pointer;
+
+    font-weight:
+        bold;
+}
+
+
+.topo {
+
+    background:
+        var(--header);
+
+    color:
+        white;
+
+    padding:
+        25px 35px;
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    align-items:
+        center;
+}
+
+
+.topo h1 {
+
+    font-size:
+        24px;
+
+    margin-bottom:
+        7px;
+}
+
+
+.topo p {
+
+    color:
+        #94a3b8;
+}
+
+
+.acoes-topo {
+
+    display:
+        flex;
+
+    gap:
+        10px;
+
+    align-items:
+        center;
+}
+
+
+.btn {
+
+    background:
+        var(--primary);
+
+    color:
+        white;
+
+    padding:
+        10px 16px;
+
+    border-radius:
+        7px;
+}
+
+
+.btn:hover {
+
+    background:
+        var(--primary-hover);
+}
+
+
+.btn-config {
+
+    background:
+        #374151;
+
+    color:
+        white;
+
+    width:
+        42px;
+
+    height:
+        42px;
+
+    border-radius:
+        7px;
+
+    font-size:
+        19px;
+}
+
+.container {
+
+    max-width:
+        1450px;
+
+    margin:
+        auto;
+
+    padding:
+        25px;
+}
+
+
+.cards {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap:
+        18px;
+
+    margin-bottom:
+        25px;
+}
+
+
+.card {
+
+    background:
+        var(--surface);
+
+    border-radius:
+        10px;
+
+    padding:
+        20px;
+
+    box-shadow:
+        var(--shadow);
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        15px;
+}
+
+
+.card-icon {
+
+    font-size:
+        30px;
+}
+
+
+.card small {
+
+    display:
+        block;
+
+    color:
+        var(--text-light);
+
+    margin-bottom:
+        5px;
+}
+
+
+.card strong {
+
+    font-size:
+        25px;
+}
+
+
+.controle {
+
+    background:
+        var(--surface);
+
+    border-radius:
+        10px;
+
+    padding:
+        15px;
+
+    box-shadow:
+        var(--shadow);
+
+    margin-bottom:
+        10px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        15px;
+}
+
+
+controle button {
+    background: #e5e7eb;
+    color: #111827;
+    border-radius: 6px;
+    width: 38px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+.controle button:hover {
+    background: var(--primary);
+    color: white;
+}
+
+
+.controle .btn-hoje {
+    width: auto;
+    padding: 0 15px;
+    font-size: 14px;
+}
+
+
+body.dark .controle button {
+
+    background:
+        #334155;
+
+    color:
+        white;
+}
+
+
+.controle h2 {
+
+    min-width:
+        240px;
+
+    text-align:
+        center;
+
+    text-transform:
+        capitalize;
+}
+
+
+.btn-hoje {
+
+    width:
+        auto !important;
+
+    padding:
+        0 15px;
+}
+
+
+.filtros {
+
+    background:
+        var(--surface);
+
+    padding:
+        15px;
+
+    border-radius:
+        10px;
+
+    margin-bottom:
+        10px;
+
+    display:
+        flex;
+
+    gap:
+        10px;
+
+    align-items:
+        center;
+}
+
+
+.filtros select {
+
+    padding:
+        9px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        6px;
+
+    background:
+        var(--surface);
+
+    color:
+        var(--text);
+}
+
+
+.calendario {
+
+    background:
+        var(--surface);
+
+    border-radius:
+        10px;
+
+    overflow:
+        hidden;
+
+    box-shadow:
+        var(--shadow);
+}
+
+
+.dias-semana {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(7, 1fr);
+
+    background:
+        var(--header);
+
+    color:
+        white;
+
+    text-align:
+        center;
+
+    font-weight:
+        bold;
+}
+
+
+.dias-semana div {
+
+    padding:
+        12px;
+}
+
+
+.grade {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(7, 1fr);
+}
+
+
+.dia {
+
+    min-height:
+        145px;
+
+    border-right:
+        1px solid var(--border);
+
+    border-bottom:
+        1px solid var(--border);
+
+    padding:
+        8px;
+
+    position:
+        relative;
+}
+
+
+.dia:hover {
+
+    background:
+        rgba(37,99,235,.04);
+}
+
+
+.dia-vazio {
+
+    background:
+        rgba(0,0,0,.02);
+}
+
+
+.numero {
+
+    font-weight:
+        bold;
+
+    width:
+        28px;
+
+    height:
+        28px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    margin-bottom:
+        5px;
+}
+
+
+.hoje {
+
+    background:
+        var(--primary);
+
+    color:
+        white;
+
+    border-radius:
+        50%;
+}
+
+
+.adicionar-dia {
+
+    position:
+        absolute;
+
+    top:
+        8px;
+
+    right:
+        8px;
+
+    background:
+        transparent;
+
+    color:
+        var(--text-light);
+
+    font-size:
+        18px;
+}
+
+
+.adicionar-dia:hover {
+
+    color:
+        var(--primary);
+}
+
+
+.evento {
+
+    border-radius:
+        5px;
+
+    padding:
+        6px;
+
+    margin-bottom:
+        5px;
+
+    color:
+        white;
+
+    cursor:
+        pointer;
+
+    font-size:
+        12px;
+
+    border-left:
+        4px solid rgba(255,255,255,.8);
+}
+
+
+.evento strong {
+
+    display:
+        block;
+}
+
+
+.evento small {
+
+    display:
+        block;
+
+    opacity:
+        .9;
+
+    margin-top:
+        2px;
+}
+
+
+.evento:hover {
+
+    opacity:
+        .85;
+}
+
+
+.secao {
+
+    background:
+        var(--surface);
+
+    margin-top:
+        25px;
+
+    padding:
+        20px;
+
+    border-radius:
+        10px;
+
+    box-shadow:
+        var(--shadow);
+}
+
+
+.secao h2 {
+
+    margin-bottom:
+        5px;
+}
+
+
+.secao p {
+
+    color:
+        var(--text-light);
+
+    margin-bottom:
+        20px;
+}
+
+
+.lista {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(auto-fill, minmax(220px, 1fr));
+
+    gap:
+        12px;
+}
+
+
+.item {
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        8px;
+
+    padding:
+        13px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        10px;
+}
+
+
+.bolinha {
+
+    width:
+        18px;
+
+    height:
+        18px;
+
+    border-radius:
+        50%;
+
+    flex-shrink:
+        0;
+}
+
+
+.quadrado {
+
+    width:
+        18px;
+
+    height:
+        18px;
+
+    border-radius:
+        4px;
+
+    flex-shrink:
+        0;
+}
+
+
+.item-info {
+
+    flex:
+        1;
+}
+
+
+.item-info small {
+
+    display:
+        block;
+
+    color:
+        var(--text-light);
+
+    margin-top:
+        3px;
+}
+
+
+.btn-excluir {
+
+    background:
+        transparent;
+
+    color:
+        var(--danger);
+
+    font-size:
+        16px;
+}
+
+
+.modal {
+
+    display:
+        none;
+
+    position:
+        fixed;
+
+    inset:
+        0;
+
+    background:
+        rgba(0,0,0,.6);
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    z-index:
+        1000;
+
+    padding:
+        20px;
+}
+
+
+.modal.aberto {
+
+    display:
+        flex;
+}
+
+
+.modal-box {
+
+    background:
+        var(--surface);
+
+    color:
+        var(--text);
+
+    width:
+        500px;
+
+    max-width:
+        100%;
+
+    max-height:
+        90vh;
+
+    overflow:
+        auto;
+
+    border-radius:
+        12px;
+
+    padding:
+        25px;
+}
+
+
+.modal-header {
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    align-items:
+        center;
+
+    margin-bottom:
+        20px;
+}
+
+
+.fechar {
+
+    background:
+        transparent;
+
+    font-size:
+        25px;
+
+    color:
+        var(--text);
+}
+
+
+.campo {
+
+    margin-bottom:
+        15px;
+}
+
+
+.campo label {
+
+    display:
+        block;
+
+    font-weight:
+        bold;
+
+    margin-bottom:
+        6px;
+}
+
+
+.campo input,
+.campo select,
+.campo textarea {
+
+    width:
+        100%;
+
+    padding:
+        10px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        6px;
+
+    background:
+        var(--surface);
+
+    color:
+        var(--text);
+
+    font-size:
+        14px;
+}
+
+
+.campo textarea {
+
+    min-height:
+        100px;
+
+    resize:
+        vertical;
+}
+
+
+.campo input[type="color"] {
+
+    height:
+        45px;
+
+    padding:
+        3px;
+
+    cursor:
+        pointer;
+}
+
+
+.acoes-modal {
+
+    display:
+        flex;
+
+    justify-content:
+        flex-end;
+
+    gap:
+        10px;
+
+    margin-top:
+        20px;
+}
+
+
+.btn-cancelar {
+
+    background:
+        #e5e7eb;
+
+    color:
+        #111827;
+
+    padding:
+        10px 15px;
+
+    border-radius:
+        6px;
+}
+
+
+.config-cor {
+
+    display:
+        flex;
+
+    gap:
+        10px;
+
+    align-items:
+        center;
+}
+
+
+@media(max-width: 900px) {
+
+    .cards {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .topo {
+
+        flex-direction:
+            column;
+
+        align-items:
+            flex-start;
+
+        gap:
+            15px;
+    }
+
+
+    .dia {
+
+        min-height:
+            110px;
+    }
+
+}
+
+
+@media(max-width: 600px) {
+
+    .container {
+
+        padding:
+            10px;
+    }
+
+
+    .acoes-topo {
+
+        flex-wrap:
+            wrap;
+    }
+
+
+    .filtros {
+
+        flex-direction:
+            column;
+
+        align-items:
+            stretch;
+    }
+
+
+    .dia {
+
+        min-height:
+            90px;
+
+        padding:
+            4px;
+    }
+
+
+    .evento {
+
+        font-size:
+            10px;
+    }
+
+}
